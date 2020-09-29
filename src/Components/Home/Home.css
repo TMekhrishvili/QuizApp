@@ -1,13 +1,13 @@
 .start-quiz {
     margin: 15% auto;
     width: 20%;
-    background-color: #7af0a7;
+    background-color: #1f2220;
     padding: 20px;
     text-align: center;
 }
 
 .start-quiz:hover {
-    background-color: #37ec7c;
+    background-color: #0c0e0d;
 }
 
 .start-quiz-text {
