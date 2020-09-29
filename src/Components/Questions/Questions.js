@@ -19,7 +19,7 @@ function Questions () {
   return (
     <div>
       {items.map((item, i) => (
-        <Link to={`/qusetion/${i+1}`}><p>{item.question}</p></Link>
+        <Link to={`/questions/${i+1}`}><p>{item.question}</p></Link>
       ))}
     </div>
     )
