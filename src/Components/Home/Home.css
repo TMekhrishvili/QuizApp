@@ -1,0 +1,15 @@
+.start-quiz {
+    margin: 15% auto;
+    width: 20%;
+    background-color: #7af0a7;
+    padding: 20px;
+    text-align: center;
+}
+
+.start-quiz:hover {
+    background-color: #37ec7c;
+}
+
+.start-quiz-text {
+    color: white;
+}
