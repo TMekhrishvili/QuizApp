@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Home from './Components/Home'
 import Difficulty from './Components/Difficulty'
 import Category from './Components/Category'
+import Questions from './Components/Questions'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 const App = () => (
@@ -11,6 +12,7 @@ const App = () => (
       <Route path="/" exact component={Home} />
       <Route path="/category" component={Category} />
       <Route path="/difficulty" component={Difficulty} />
+      <Route path="/questions" component={Questions} />
     </Switch>
   </Router>
 )

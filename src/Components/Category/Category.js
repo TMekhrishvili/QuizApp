@@ -1,7 +1,8 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 const Category = () => (
     <div>
-      <p>Category</p>
+      <Link to="/difficulty">Difficulty</Link>
     </div>
   )
 export default Category
