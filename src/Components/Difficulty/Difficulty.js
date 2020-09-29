@@ -1,7 +1,7 @@
 import React from 'react'
 const Difficulty = () => (
     <div>
-      <p>Hello world</p>
+      <p>Difficulty</p>
     </div>
   )
 export default Difficulty

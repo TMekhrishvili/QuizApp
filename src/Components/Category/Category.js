@@ -1,7 +1,7 @@
 import React from 'react'
 const Category = () => (
     <div>
-      <p>Hello world</p>
+      <p>Category</p>
     </div>
   )
 export default Category
