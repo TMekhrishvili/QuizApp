@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import {Link} from 'react-router-dom'
+import {QuestionsContext} from '../../ContextAPI/QuestionsContext'
 
 
-function Questions () {
-
-  useEffect(()=>{
-    fetchItems();
-  }, [])
-
-  const [items, setItems] = useState([]);
-
-  const fetchItems = async () => {
-    const data = await fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple");
-    const item = await data.json();
-    console.log(item.results);
-    setItems(item.results)
-  }
+const Questions = () => {
+  const [questions, setQuestions] =  useContext(QuestionsContext);
   return (
     <div>
-      {items.map((item, i) => (
-        <Link to={`/questions/${i+1}`}><p>{item.question}</p></Link>
-      ))}
-    </div>
-    )
-  }
-  export default Questions
+    {questions.map((item) => (
+      <Link to={`/questions/${1}`}><p>{item.question}</p></Link>
+    ))}
+      </div>
+      )
+    }
+    export default Questions
