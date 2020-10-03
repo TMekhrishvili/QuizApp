@@ -18,14 +18,12 @@ const Questions = () => {
             .then((res) => res.json())
             .then((data) => {
                 setQuestions(data.results);
-                console.log(category + " - " + difficulty);
-                console.log(data.results)
+                console.log(data.results);
             })
     }
 
     const handleClick = () => {
-        setIndex(index + 1);
-        console.log("ინდექსი");
+        console.log("შემოდის" + index + 1);
     }
 
     const i = <span className="numeration">{index}. </span>
@@ -43,7 +41,7 @@ const Questions = () => {
                 </Card>
             </div>
         ) : (
-                <div class="align-items-center d-flex justify-content-center">
+                <div className="align-items-center d-flex justify-content-center">
                     <img src="https://i.gifer.com/YCZH.gif" alt="loading" />
                 </div>
             )
