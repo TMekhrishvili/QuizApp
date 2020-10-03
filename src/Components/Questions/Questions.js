@@ -23,10 +23,19 @@ const Questions = () => {
                 setQuestions(data.results);
             })
     }
+
+    const handleClick = () => {
+        console.log("ინდექსი " + index);
+        if(index==9){
+            alert("Your Score is " + score);
+        }
+        setIndex(index + 1);
+    }
     const shuffle = array => {
         const answers = array.incorrect_answers;
         answers.push(array.correct_answer)
         answers.sort(() => Math.random() - 0.5);
+        console.log(answers);
         return answers;
     }
     return (
@@ -36,7 +45,9 @@ const Questions = () => {
                     <CardHeader dangerouslySetInnerHTML={{ __html: questions[index].question }} />
                     <CardBody>
                         {shuffle(questions[index]).map((ans) => (
-                            <Answer index={index} ans={ans} correct={questions[index].correct_answer} />
+                            <div onClick={handleClick}>
+                                <Answer index={index} ans={ans} correct={questions[index].correct_answer} />
+                            </div>
                         ))}
                     </CardBody>
                     <CardFooter>

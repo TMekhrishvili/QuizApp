@@ -18,6 +18,7 @@ const Answer = ({ index, ans, correct }) => {
         <>
             <Row className="ans">
                 <Button
+                    type="button"
                     value={ans}
                     onClick={handleChange}
                     color="primary"
