@@ -3,6 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter, Button, Row } from 'reactstrap'
 import Category from '../Category'
 import Difficulty from '../Difficulty'
 import { Link } from 'react-router-dom'
+import './Home.css'
 
 const Home = () => {
 
@@ -14,12 +15,13 @@ const Home = () => {
         </CardHeader>
         <CardBody>
           <Category />
+          <br />
           <Difficulty />
         </CardBody>
         <CardFooter>
           <Row>
             <Button block color="success" size="lg" style={{ margin: '5px 10px', padding: '10px' }}>
-              <Link style={{ textDecoration: 'none', color: 'white' }} to="/questions/1">Start Quiz</Link>
+              <Link style={{ textDecoration: 'none', color: 'white' }} to="/questions">Start Quiz</Link>
             </Button>
           </Row>
         </CardFooter>

@@ -1,18 +1,20 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { DifficultyContext } from '../../ContextAPI/DifficultyContext'
-
+import React from 'react'
+import './Difficulty.css'
 const Difficulty = () => {
-  //const [difficulty, setDifficulty] = useContext(DifficultyContext);
+
 
   const handleEdit = e => {
     e.preventDefault();
-    //setDifficulty(e.target.name);
+    //setCategory(e.target.id);
   }
 
   return (
-    <div>
-    </div>
+    <select class="form-control form-control-lg">
+      <option selected disabled>Any Difficulty</option>
+      <option>Easy</option>
+      <option>Medium</option>
+      <option>Hard</option>
+    </select>
   )
 }
 export default Difficulty

@@ -1,15 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './Category.css'
-import { Link } from 'react-router-dom'
-import { CategoryContext } from '../../ContextAPI/CategoryContext'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Row } from 'reactstrap'
-const Item = () => (<Row>
-  <DropdownItem>Foo Action</DropdownItem>
-</Row>)
 const Category = () => {
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
 
   const handleEdit = e => {
     e.preventDefault();
@@ -17,14 +8,12 @@ const Category = () => {
   }
 
   return (
-    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>
-        აირჩიეთ კატეგორია
-      </DropdownToggle>
-      <DropdownMenu>
-        <Item />
-      </DropdownMenu>
-    </Dropdown>
+    <select class="form-control form-control-lg">
+      <option selected disabled>Any Category</option>
+      <option>Music</option>
+      <option>Books</option>
+      <option>Programming</option>
+    </select>
   )
 }
 export default Category

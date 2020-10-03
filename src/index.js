@@ -18,9 +18,7 @@ const App = () => (
       <CategoryProvider>
         <DifficultyProvider>
           <QuestionsProvider>
-            <Route path="/category" component={Category} />
-            <Route path="/difficulty" component={Difficulty} />
-            <Route path="/questions/:id" component={Questions} />
+            <Route path="/questions" component={Questions} />
           </QuestionsProvider>
         </DifficultyProvider>
       </CategoryProvider>
