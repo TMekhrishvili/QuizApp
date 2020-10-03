@@ -1,43 +1,49 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap'
+import { Card, CardHeader, CardBody, CardFooter } from 'reactstrap'
 import './Questions.css'
 import { SettingsContext } from '../../ContextAPI/SettingsContext'
 import Answer from './Answer'
+import { Row, Col } from 'reactstrap'
 
 const Questions = () => {
+
     useEffect(() => {
         fetchQuestions();
+        //.then(shuffle());
     }, [])
 
     const [index, setIndex] = useState(0);
     const [questions, setQuestions] = useState([]);
-    const [category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
+    const [score, setScore, category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
 
     const fetchQuestions = async () => {
         const data = await fetch(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`)
             .then((res) => res.json())
             .then((data) => {
                 setQuestions(data.results);
-                console.log(data.results);
             })
     }
-
-    const handleClick = () => {
-        console.log("შემოდის" + index + 1);
+    const shuffle = array => {
+        const answers = array.incorrect_answers;
+        answers.push(array.correct_answer)
+        answers.sort(() => Math.random() - 0.5);
+        return answers;
     }
-
-    const i = <span className="numeration">{index}. </span>
     return (
         questions.length > 0 ? (
             <div className="question-container">
                 <Card>
-                    <CardHeader dangerouslySetInnerHTML={{ __html: (i, questions[index].question) }} />
+                    <CardHeader dangerouslySetInnerHTML={{ __html: questions[index].question }} />
                     <CardBody>
-                        <Answer index={index} data={questions[index]} onClick={handleClick} />
-                        <Answer index={index} data={questions[index]} onClick={handleClick} />
-                        <Answer index={index} data={questions[index]} onClick={handleClick} />
-                        <Answer index={index} data={questions[index]} onClick={handleClick} />
+                        {shuffle(questions[index]).map((ans) => (
+                            <Answer index={index} ans={ans} correct={questions[index].correct_answer} />
+                        ))}
                     </CardBody>
+                    <CardFooter>
+                        <Row>
+                            <Col><h3 align="center">Score: {score}</h3></Col>
+                        </Row>
+                    </CardFooter>
                 </Card>
             </div>
         ) : (

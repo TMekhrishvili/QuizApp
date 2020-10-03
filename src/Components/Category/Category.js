@@ -4,7 +4,7 @@ import './Category.css'
 
 const Category = () => {
 
-  const [category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
+  const [score, setScore, category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
 
   const handleChange = (e) => {
     e.preventDefault();

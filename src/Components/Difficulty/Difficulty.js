@@ -4,7 +4,7 @@ import { SettingsContext } from '../../ContextAPI/SettingsContext'
 
 const Difficulty = () => {
 
-  const [category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
+  const [score, setScore, category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
 
   const handleChange = e => {
     e.preventDefault();
