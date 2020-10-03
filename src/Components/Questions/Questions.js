@@ -1,34 +1,44 @@
 import React, { useState, useContext } from 'react'
-import { Card, CardHeader, CardBody, Row, Col, CardFooter } from 'reactstrap'
+import { Card, CardHeader, CardBody, Row, Col, CardFooter, Button } from 'reactstrap'
 import './Questions.css'
 import { QuestionsContext } from '../../ContextAPI/QuestionsContext'
+import { Route } from 'react-router-dom'
 
-
+const Answer = ({ index, data }) => (
+    <Row className="ans">
+        <Button color="primary" size="lg" style={{ margin: '5px 10px', padding: '10px' }} block outline dangerouslySetInnerHTML={{ __html: data.incorrect_answers[index] }} />
+    </Row>
+)
 
 const Questions = () => {
-
-    const [index, setIndex] = useState(0); 
-    const [questions, setQuestions] = useContext(QuestionsContext);    
-
+    const handleClick = () => {
+        console.log("ინდექსი")
+    }
+    const [index, setIndex] = useState(0);
+    const [questions, setQuestions] = useContext(QuestionsContext);
+    const i = <span className="numeration">{index}. </span>
     return (
-        questions.length > 0 && (
+        questions.length > 0 ? (
             <div className="question-container">
+
                 <Card>
-                    <CardHeader dangerouslySetInnerHTML={{ __html: questions[index].question }} />
+                    <CardHeader dangerouslySetInnerHTML={{ __html: (i, questions[index].question) }} />
                     <CardBody>
-                        <Row>
-                            <Col onClick={setIndex(index + 1)} dangerouslySetInnerHTML={{ __html: questions[index].correct_answer }} />
-                            <Col onClick={setIndex(index + 1)} dangerouslySetInnerHTML={{ __html: questions[index].incorrect_answers[2] }} />
-                        </Row>
-                        <Row>
-                            <Col onClick={setIndex(index + 1)} dangerouslySetInnerHTML={{ __html: questions[index].incorrect_answers[1] }} />
-                            <Col onClick={setIndex(index + 1)} dangerouslySetInnerHTML={{ __html: questions[index].incorrect_answers[0] }} />
-                        </Row>
+
+                        <Answer index={index} data={questions[index]} onClick={handleClick} />
+                        <Answer index={index} data={questions[index]} onClick={handleClick} />
+
+                        <Answer index={index} data={questions[index]} onClick={handleClick} />
+                        <Answer index={index} data={questions[index]} onClick={handleClick} />
+
                     </CardBody>
-                    <CardFooter>{index}</CardFooter>
                 </Card>
             </div>
-        )
+        ) : (
+                <div class="align-items-center d-flex justify-content-center">
+                    Loading...
+                </div>
+            )
     )
 }
 

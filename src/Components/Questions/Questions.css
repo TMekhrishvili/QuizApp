@@ -1,15 +1,36 @@
-
+@import url("//fonts.googleapis.com/css?family=Hammersmith+One");
 body {
-    background-color: rgb(220, 247, 246);
+    background-color: rgb(210, 192, 252);
+    font-family: "Hammersmith One";
 }
 
 .question-container {
-    margin: 100px auto;
-    width: 40%;
+    margin: 70px auto;
+    width: 45%;
     background-color: white;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@media (max-width: 600px) {
+    .question-container {
+        width: 85%;
+    }
+}
+@media (max-width: 400px) {
+    .question-container {
+        width: 95%;
+    }
+}
+@media (max-width: 800px) {
+    .question-container {
+        width: 75%;
+    }    
+}
+@media (max-width: 1200px) {
+    .question-container {
+        width: 65%;
+    }  
 }
 .question{
     margin: 20px;
@@ -22,4 +43,28 @@ body {
 .load {
     margin: 100px auto;
     width: 100px;
+}
+.card-header {
+    background-color: rgb(80, 55, 128);
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+div.button {
+    color: rgb(22, 4, 56)
+}
+.numeration {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(65, 22, 168)
+}
+
+.btn-outline-primary {
+    color: rgb(65, 22, 168);
+    border-color: rgb(65, 22, 168);
+}
+
+.btn-outline-primary:hover {
+    background-color:  rgb(65, 22, 168);
+    color: white;
 }
