@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import './Difficulty.css'
-import { DifficultyContext } from '../../ContextAPI/DifficultyContext'
+import { SettingsContext } from '../../ContextAPI/SettingsContext'
 
 const Difficulty = () => {
 
-  const [difficulty, setDifficulty] = useContext(DifficultyContext);
+  const [setDifficulty] = useContext(SettingsContext);
 
   const handleEdit = e => {
     e.preventDefault();
@@ -14,7 +14,7 @@ const Difficulty = () => {
 
   return (
     <form>
-      <select class="form-control form-control-lg">
+      <select className="form-control form-control-lg">
         <option selected disabled>Any Difficulty</option>
         <option onChange={handleEdit} name="easy">Easy</option>
         <option onChange={handleEdit} name="medium">Medium</option>

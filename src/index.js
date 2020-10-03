@@ -1,20 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Home from './Components/Home'
-import Difficulty from './Components/Difficulty'
-import Category from './Components/Category'
 import Questions from './Components/Questions'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
+import { SettingsProvider } from './ContextAPI/SettingsContext'
 const App = () => (
 
-
-  <Router>
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/questions" component={Questions} />
-    </Switch>
-  </Router >
+  <SettingsProvider>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/questions" component={Questions} />
+      </Switch>
+    </Router >
+  </SettingsProvider>
 )
 
 ReactDOM.render(<App />, document.getElementById('root'))
