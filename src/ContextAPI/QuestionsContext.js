@@ -14,10 +14,14 @@ export const QuestionsProvider = props => {
     const [difficulty, setDifficulty] = useContext(DifficultyContext);
 
     const fetchQuestions = async () => {
-        const data = await fetch(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`);
-        const item = await data.json();
-        console.log(category + " და " + difficulty)
-        setQuestions(item.results)
+        const data = await fetch(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`)
+        .then((res) => res.json())
+        .then((data) =>{
+          setQuestions(data.results)
+          console.log(data.results)
+        })
+        
+        
       }
 
     return <QuestionsContext.Provider value={[questions, setQuestions]}>{props.children}</QuestionsContext.Provider>;

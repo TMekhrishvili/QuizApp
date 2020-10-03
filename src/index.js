@@ -4,27 +4,28 @@ import Home from './Components/Home'
 import Difficulty from './Components/Difficulty'
 import Category from './Components/Category'
 import Questions from './Components/Questions'
-import { QuestionsProvider } from './ContextAPI/QuestionsContext'
 import { CategoryProvider } from './ContextAPI/CategoryContext'
 import { DifficultyProvider } from './ContextAPI/DifficultyContext'
-
+import { QuestionsProvider } from './ContextAPI/QuestionsContext'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App = () => (
-  <DifficultyProvider>
-    <CategoryProvider>
-      <QuestionsProvider>
-        <Router>
-          <Switch>
-            <Route path="/" exact component={Home} />
+
+
+  <Router>
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <CategoryProvider>
+        <DifficultyProvider>
+          <QuestionsProvider>
             <Route path="/category" component={Category} />
             <Route path="/difficulty" component={Difficulty} />
             <Route path="/questions/:id" component={Questions} />
-          </Switch>
-        </Router>
-      </QuestionsProvider>
-    </CategoryProvider>
-  </DifficultyProvider>
+          </QuestionsProvider>
+        </DifficultyProvider>
+      </CategoryProvider>
+    </Switch>
+  </Router >
 )
 
 ReactDOM.render(<App />, document.getElementById('root'))
