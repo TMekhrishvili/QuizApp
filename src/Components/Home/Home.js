@@ -1,8 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import { Card, CardHeader, CardBody, CardFooter, Button, Row } from 'reactstrap'
 import Category from '../Category'
 import Difficulty from '../Difficulty'
 import { Link } from 'react-router-dom'
+import { CategoryProvider } from '../../ContextAPI/CategoryContext'
+import { DifficultyProvider } from '../../ContextAPI/DifficultyContext'
 import './Home.css'
 
 const Home = () => {
@@ -14,9 +16,13 @@ const Home = () => {
           <h2>George's Quiz</h2>
         </CardHeader>
         <CardBody>
-          <Category />
-          <br />
-          <Difficulty />
+          <CategoryProvider>
+            <DifficultyProvider>
+              <Category />
+              <br />
+              <Difficulty />
+            </DifficultyProvider>
+          </CategoryProvider>
         </CardBody>
         <CardFooter>
           <Row>
