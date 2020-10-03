@@ -1,16 +1,31 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import './Home.css'
+import React, { useState, useContext } from 'react'
+import { Card, CardHeader, CardBody, CardFooter, Button, Row } from 'reactstrap'
+import Category from '../Category'
+import Difficulty from '../Difficulty'
+import { Link } from 'react-router-dom'
 
-const Home = () => (
-    <div>
-      <Link style={{ textDecoration: 'none' }} to="/category">
-        <div className="container">
-          <div className="start-quiz">
-            <h1 className="start-quiz-text">Start Quiz</h1>
-          </div>
-        </div>
-      </Link>
+const Home = () => {
+
+  return (
+    <div className="question-container">
+      <Card>
+        <CardHeader>
+          <h2>George's Quiz</h2>
+        </CardHeader>
+        <CardBody>
+          <Category />
+          <Difficulty />
+        </CardBody>
+        <CardFooter>
+          <Row>
+            <Button block color="success" size="lg" style={{ margin: '5px 10px', padding: '10px' }}>
+              <Link style={{ textDecoration: 'none', color: 'white' }} to="/questions/1">Start Quiz</Link>
+            </Button>
+          </Row>
+        </CardFooter>
+      </Card>
     </div>
   )
+}
+
 export default Home

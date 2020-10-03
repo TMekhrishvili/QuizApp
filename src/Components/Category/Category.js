@@ -1,29 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Category.css'
 import { Link } from 'react-router-dom'
 import { CategoryContext } from '../../ContextAPI/CategoryContext'
-
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Row } from 'reactstrap'
+const Item = () => (<Row>
+  <DropdownItem>Foo Action</DropdownItem>
+</Row>)
 const Category = () => {
 
-  const [category, setCategory] = useContext(CategoryContext);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
 
   const handleEdit = e => {
     e.preventDefault();
-    setCategory(e.target.id);
+    //setCategory(e.target.id);
   }
 
   return (
-    <div>
-      {/*<Link to="/difficulty">Category</Link>*/}
-      <form>
-        <button id={9} type="button" onClick={handleEdit}><Link style={{ textDecoration: 'none' }} to="/difficulty">General</Link></button>
-        <button id={10} type="button" onClick={handleEdit}><Link style={{ textDecoration: 'none' }} to="/difficulty">Books</Link></button>
-        <button id={11} type="button" onClick={handleEdit}><Link style={{ textDecoration: 'none' }} to="/difficulty">Films</Link></button>
-        <button id={12} type="button" onClick={handleEdit}><Link style={{ textDecoration: 'none' }} to="/difficulty">Music</Link></button>
-        <button id={18} type="button" onClick={handleEdit}><Link style={{ textDecoration: 'none' }} to="/difficulty">Computer</Link></button>
-        <button id={19} type="button" onClick={handleEdit}><Link style={{ textDecoration: 'none' }} to="/difficulty">Mathematics</Link></button>
-      </form>
-    </div>
+    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+      <DropdownToggle caret>
+        აირჩიეთ კატეგორია
+      </DropdownToggle>
+      <DropdownMenu>
+        <Item />
+      </DropdownMenu>
+    </Dropdown>
   )
 }
 export default Category
