@@ -64,6 +64,11 @@ div.button {
     border-color: rgb(65, 22, 168);
 }
 
+.btn-outline-success {
+    color: rgb(61, 190, 35);
+    border-color: rgb(38, 207, 32);
+}
+
 .btn-outline-primary:hover {
     background-color:  rgb(65, 22, 168);
     color: white;

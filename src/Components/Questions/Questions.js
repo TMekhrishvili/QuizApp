@@ -1,17 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Card, CardHeader, CardBody, CardFooter } from 'reactstrap'
+import { Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import './Questions.css'
 import { SettingsContext } from '../../ContextAPI/SettingsContext'
 import Answer from './Answer'
-import { Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap';
+import Message from './Message';
+import { Link } from 'react-router-dom';
 
 const Questions = () => {
 
     useEffect(() => {
         fetchQuestions();
-        //.then(shuffle());
     }, [])
-
+    const [modal, setModal] = useState(false);
     const [index, setIndex] = useState(0);
     const [questions, setQuestions] = useState([]);
     const [score, setScore, category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
@@ -25,22 +26,24 @@ const Questions = () => {
     }
 
     const handleClick = () => {
-        console.log("ინდექსი " + index);
-        if(index==9){
-            alert("Your Score is " + score);
+        if (index === 9) {
+            setModal(true);
+        } else {
+            setIndex(index + 1);
         }
-        setIndex(index + 1);
     }
+
     const shuffle = array => {
         const answers = array.incorrect_answers;
         answers.push(array.correct_answer)
         answers.sort(() => Math.random() - 0.5);
-        console.log(answers);
         return answers;
     }
+
     return (
         questions.length > 0 ? (
             <div className="question-container">
+                <Message sc={score} tog={modal} />
                 <Card>
                     <CardHeader dangerouslySetInnerHTML={{ __html: questions[index].question }} />
                     <CardBody>
@@ -51,8 +54,9 @@ const Questions = () => {
                         ))}
                     </CardBody>
                     <CardFooter>
-                        <Row>
-                            <Col><h3 align="center">Score: {score}</h3></Col>
+                        <Row sp="2">
+                            <Col><h3 align="left" >Score: {score}</h3></Col>
+                            <Col><Link style={{ textDecoration: 'none', color: 'red' }} to="/"><h3 align="right">Reset Quiz!</h3></Link></Col>
                         </Row>
                     </CardFooter>
                 </Card>
