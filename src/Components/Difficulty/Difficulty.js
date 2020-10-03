@@ -4,21 +4,19 @@ import { SettingsContext } from '../../ContextAPI/SettingsContext'
 
 const Difficulty = () => {
 
-  const [setDifficulty] = useContext(SettingsContext);
+  const [category, setCategory, difficulty, setDifficulty] = useContext(SettingsContext);
 
-  const handleEdit = e => {
+  const handleChange = e => {
     e.preventDefault();
-    console.log(e.target.name)
-    setDifficulty(e.target.name);
+    setDifficulty(e.target.value);
   }
 
   return (
     <form>
-      <select className="form-control form-control-lg">
-        <option selected disabled>Any Difficulty</option>
-        <option onChange={handleEdit} name="easy">Easy</option>
-        <option onChange={handleEdit} name="medium">Medium</option>
-        <option onChange={handleEdit} name="hard">Hard</option>
+      <select  type="select" value={difficulty} onChange={handleChange} className="form-control form-control-lg">
+        <option name="easy" value="easy">Easy</option>
+        <option name="medium" value="medium">Medium</option>
+        <option name="hard" value="hard">Hard</option>
       </select>
     </form>
   )
